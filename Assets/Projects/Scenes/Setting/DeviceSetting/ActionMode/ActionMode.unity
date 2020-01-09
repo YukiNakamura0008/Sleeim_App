@@ -314,8 +314,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SuppressModeIbikiToggle: {fileID: 763775997}
-  MonitoringModeToggle: {fileID: 336824268}
   SuppressModeToggle: {fileID: 1663587403}
+  MonitoringModeToggle: {fileID: 336824268}
   SuppressModeMukokyuToggle: {fileID: 1746944402}
 --- !u!1001 &734898988
 Prefab:
@@ -1088,6 +1088,7 @@ GameObject:
   - component: {fileID: 1692617425}
   - component: {fileID: 1692617427}
   - component: {fileID: 1692617426}
+  - component: {fileID: 1692617428}
   m_Layer: 5
   m_Name: BackGround
   m_TagString: Untagged
@@ -1148,6 +1149,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1692617424}
+--- !u!114 &1692617428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1692617424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b89640b496220478b88a0313df93bf32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAutoScale: 0
+  simulateOnPlay: 1
+  simulateType: 1
+  isPortrait: 1
 --- !u!114 &1746944402 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114860636548708000, guid: 9039ebbe05ac38443aeba4f65eb1c866,

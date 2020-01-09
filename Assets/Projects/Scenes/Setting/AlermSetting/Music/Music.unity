@@ -3036,7 +3036,7 @@ Prefab:
     - target: {fileID: 224569022956589090, guid: fc2e7c827a965854d955ac01e8aec245,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 128
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 224569022956589090, guid: fc2e7c827a965854d955ac01e8aec245,
         type: 2}
@@ -3067,6 +3067,21 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114338503883945922, guid: fc2e7c827a965854d955ac01e8aec245,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114338503883945922, guid: fc2e7c827a965854d955ac01e8aec245,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114338503883945922, guid: fc2e7c827a965854d955ac01e8aec245,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc2e7c827a965854d955ac01e8aec245, type: 2}
@@ -4308,6 +4323,7 @@ GameObject:
   - component: {fileID: 1692617425}
   - component: {fileID: 1692617427}
   - component: {fileID: 1692617426}
+  - component: {fileID: 1692617428}
   m_Layer: 5
   m_Name: BackGround
   m_TagString: Untagged
@@ -4368,6 +4384,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1692617424}
+--- !u!114 &1692617428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1692617424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b89640b496220478b88a0313df93bf32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAutoScale: 0
+  simulateOnPlay: 1
+  simulateType: 1
+  isPortrait: 1
 --- !u!1 &1730221503
 GameObject:
   m_ObjectHideFlags: 0
