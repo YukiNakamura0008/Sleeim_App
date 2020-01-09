@@ -32,7 +32,7 @@ extern void UnitySendMessage(const char *, const char *, const char *);
         
         for (UIView* view in views) {
             NSString* classString = NSStringFromClass([view class]);
-            if ([classString isEqualToString:@"EAGLView"] || [classString isEqualToString:@"MainGLView"] || [classString isEqualToString:@"UnityView"]) {
+            if ([classString isEqualToString:@"EAGLView"] || [classString isEqualToString:@"MainGLView"] || [classString isEqualToString:@"UnityView"] || [classString isEqualToString:@"UITransitionView"]) {
                 NSLog(@"found %@", classString);
                 _glView = view;
                 break;
