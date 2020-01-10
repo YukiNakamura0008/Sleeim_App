@@ -32,7 +32,8 @@ public class HistoryListViewController : ViewControllerBase {
 
 	void OnEnable () {
 		//タッチマネージャーのイベントリスナーを設定
-		TouchManager.Instance.FlickComplete += OnFlickComplete;
+		// after fix
+//		TouchManager.Instance.FlickComplete += OnFlickComplete;
 	}
 
 	void OnDisable () {
@@ -41,12 +42,16 @@ public class HistoryListViewController : ViewControllerBase {
 	}
 
 	void InitView () {
+		var elementObj1 = Instantiate (ListElementPrehab);
+		Adapter.SetElementToList (elementObj1);
 		//前に見た画面を表示する
 		if (UserDataManager.Scene.GetHistoryDate () != DateTime.MinValue) {
+			Debug.Log ("mou 2nd");
 			currentDispDate = UserDataManager.Scene.GetHistoryDate ();
 			UpdateView ();
 		} else {
 			//初回なら
+			Debug.Log ("mou 1st");
 			ToLatestMonth ();
 		}
 	}
@@ -56,11 +61,15 @@ public class HistoryListViewController : ViewControllerBase {
 		//既にデータ読み込み中であれば、前の処理を止める
 		if (GetSleepListElementData != null)
 			StopCoroutine (GetSleepListElementData);
+		var elementObj1 = Instantiate (ListElementPrehab);
+		Adapter.SetElementToList (elementObj1);
+		Debug.Log ("mou K");
 		GetSleepListElementData = DataSource.GetSleepListElementDataCoroutine (
 			scrollRect,
 			from, 
 			to, 
 			(SleepListElement.Data sleepData) => {
+				Debug.Log ("mou CK");
 				//データ取得時
 				var elementObj = Instantiate (ListElementPrehab);
 				var element = elementObj.GetComponent <SleepListElement> ();
@@ -77,6 +86,8 @@ public class HistoryListViewController : ViewControllerBase {
 	//画面表示を更新する
 	void UpdateView () {
 		UpdateListView ();
+		var elementObj1 = Instantiate (ListElementPrehab);
+		Adapter.SetElementToList (elementObj1);
 		UpdateDataSelectButton ();
 	}
 
@@ -84,13 +95,16 @@ public class HistoryListViewController : ViewControllerBase {
 	void UpdateListView () {
 		//リストビューの初期化
 		Adapter.ClearAllElement ();
+		Debug.Log (currentDispDate);
 		//表示できるデータが一件もなければ
 		if (currentDispDate == DateTime.MinValue) {
+			Debug.Log ("mou-1");
 			YearText.text = "-";
 			MonthText.text = "-";
 		} 
 		//表示できるデータがあれば
 		else {
+			Debug.Log ("mou0");
 			//一か月分のデータを表示する
 			SetDataToList (new DateTime (currentDispDate.Year, currentDispDate.Month, 1, 0, 0, 0), 
 				new DateTime (currentDispDate.Year, currentDispDate.Month, DateTime.DaysInMonth (currentDispDate.Year, currentDispDate.Month), 23, 59, 59));
@@ -104,16 +118,21 @@ public class HistoryListViewController : ViewControllerBase {
 
 	//データ送り・戻しボタンの表示を更新する
 	void UpdateDataSelectButton () {
+		Debug.Log ("mou1");
 		bool isExistNextData = GetNextMonthExistData (currentDispDate) != DateTime.MinValue;
 		bool isExistPrivData = GetPrivMonthExistData (currentDispDate) != DateTime.MinValue;
+		Debug.Log ("mou2");
 		NextButton.interactable = isExistNextData;
 		PrivButton.interactable = isExistPrivData;
+		Debug.Log ("mou3");
 	}
 
 	//最新データのある月を表示
 	public void ToLatestMonth () {
 		//最新データの日付を取得する
-		currentDispDate = DataSource.GetLatestDate ();
+		currentDispDate = new DateTime (2000, 1, 1, 0, 0, 0);
+//		currentDispDate = DataSource.GetLatestDate ();
+		Debug.Log (currentDispDate);
 		UpdateView ();	//表示更新
 	}
 

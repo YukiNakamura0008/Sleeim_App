@@ -14,6 +14,7 @@ namespace Graph {
 		public List<GameObject> CircleGraphElements;
 
 		void Start () {
+			Debug.Log ("mou GA Start");
 			//前に開いていたタブを選択する
 			switch (UserDataManager.Scene.GetGraphTabType ()) {
 			case UserDataManager.Scene.GraphTabType.Time:
@@ -26,6 +27,7 @@ namespace Graph {
 		}
 
 		public void SetBarGraphActive () {
+			Debug.Log ("mou GA SetBarGraphActive");
 			//タブの選択状態を記憶しておく
 			UserDataManager.Scene.SaveGraphTabType (UserDataManager.Scene.GraphTabType.Time);
 			foreach (GameObject element in BarGraphElements) {
@@ -34,12 +36,14 @@ namespace Graph {
 		}
 
 		public void SetBarGraphDisActive () {
+			Debug.Log ("mou GA SetBarGraphDisActive");
 			foreach (GameObject element in BarGraphElements) {
 				element.SetActive (false);
 			}
 		}
 
 		public void SetCircleGraphActive () {
+			Debug.Log ("mou GA SetCircleGraphActive");
 			//タブの選択状態を記憶しておく
 			UserDataManager.Scene.SaveGraphTabType (UserDataManager.Scene.GraphTabType.Aggregate);
 			foreach (GameObject element in CircleGraphElements) {
@@ -48,6 +52,7 @@ namespace Graph {
 		}
 
 		public void SetCircleGraphDisActive () {
+			Debug.Log ("mou GA SetCircleGraphDisActive");
 			foreach (GameObject element in CircleGraphElements) {
 				element.SetActive (false);
 			}

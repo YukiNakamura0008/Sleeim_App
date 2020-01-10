@@ -30,6 +30,7 @@ public class SleepListDataSource : MonoBehaviour
     /// </summary>
     public IEnumerator GetSleepListElementDataCoroutine(ScrollRect scrollRect, DateTime from, DateTime to, Action<SleepListElement.Data> onGetData, Action onComplete)
     {
+		Debug.Log("mou fresh");
         int initLoadNum = 7;    //はじめにまとめてロードするアイテム数
         int multiLoadNum = 5;   //スクロールした際にまとめてロードするアイテム数
         int multiLoadCount = 0;
@@ -136,6 +137,15 @@ public class SleepListDataSource : MonoBehaviour
     //睡眠データのファイル一覧から指定した期間のもののみを取得
     List<string> PickFilePathInPeriod(string[] sleepFilePathList, DateTime from, DateTime to)
     {
+
+		Debug.Log ("mou AAAAA");
+		Debug.Log (sleepFilePathList);
+
+		List<string> l = new List<string> ();
+		string v = "Assets/Data/2019.csv";
+		l.Add (v);
+		return l;
+
         return sleepFilePathList.Where(path => (from == DateTime.MinValue || Utility.TransFilePathToDate(path).CompareTo(from) >= 0) && (to == DateTime.MaxValue || Utility.TransFilePathToDate(path).CompareTo(to) <= 0)).ToList();
     }
 

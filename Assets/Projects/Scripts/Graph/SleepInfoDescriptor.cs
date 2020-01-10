@@ -83,6 +83,7 @@ public class SleepInfoDescriptor : MonoBehaviour {
     /// </summary>
     private String SleepTime {
         get {
+			Debug.Log ("sleepTime");
             //睡眠時間を秒に変換して取得
             int sec = Graph.Time.GetDateDifferencePerSecond(Data.BedTime, Data.GetUpTime);
             return Graph.Time.CreateHMSString(sec);

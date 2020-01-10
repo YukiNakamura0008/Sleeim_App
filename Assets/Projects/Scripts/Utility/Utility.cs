@@ -34,7 +34,7 @@ namespace Kaimin.Common
         {
             string path = "";
 #if UNITY_EDITOR
-            path = Application.dataPath + "/../";
+			path = "/Users/apptime/Downloads/2019";
 #else
             path = Application.persistentDataPath + "/";
 #endif
@@ -55,6 +55,8 @@ namespace Kaimin.Common
             return ApplicationPersistentPath("");
         }
 
+		static string[] bkbk = {"1","yuj"};
+
         /// <summary>
         /// 指定のディレクトリ配下に含まれる指定拡張子の一覧を取得
         /// ※ディレクトリ数/ファイル数が多いと時間がかかるので注意
@@ -63,10 +65,19 @@ namespace Kaimin.Common
         public static string[] GetAllFiles(string path, string extension)
         {
 			var db = MyDatabase.Instance;
+			string[] path1 = new string[]{ "/Users/apptime/Downloads/20191105000011.csv" };
+			return path1;
+
 			if (db == null) {
 				return null;
 			} else {
 				var sleepTable = db.GetSleepTable ();
+				Debug.Log (sleepTable);
+
+				if (sleepTable == null) {
+					return bkbk;
+				}
+
 				return sleepTable.SelectAllOrderByAsc ().Select (data => {
 					string dataPath = "";
 					//pathの最後にスラッシュがあれば、取り除く

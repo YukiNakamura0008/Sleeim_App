@@ -39,6 +39,8 @@ namespace Graph
 
         public AxisTimeLabel Output_AggrigateTimeLabel;		//集計のグラフの時間を表示するためのラベル
 
+		public GameObject IbikiMainGraph;
+		public GameObject ScrollObject;
 
         void Awake()
         {
@@ -177,8 +179,51 @@ namespace Graph
 
             if (dataList != null)
             {
+
+				// todo: vanish
+
+
+
+
                 //グラフに表示するためにラベルデータを作成
                 List<LabelData> labelDataList = TransSensingDataToLabelData(dataList);
+
+
+//				foreach (var lData in labelDataList)
+//				{
+//					if (lData != null) {
+//						if (lData is LabelData) {
+//							Debug.Log(lData.GetValue());
+//						}
+//					}
+//
+//				}
+
+				int t = labelDataList.Count ();
+				Debug.Log ("nuu POP" + t);
+				t = 6;
+
+				float hour = iziru (dataList);
+
+				RectTransform hoge = IbikiMainGraph.GetComponent<RectTransform>();
+				var x = hoge.transform.position.x;
+				var y = hoge.transform.position.y;
+				Debug.Log ("nuu POP" + x);
+
+				hoge.sizeDelta=new Vector2(600*hour,y);
+//				hoge.transform.position = new Vector3 (hoge.transform.position.x,hoge.transform.position.y,0);
+
+				hoge.localPosition=new Vector3(hoge.transform.position.x,hoge.transform.position.y,0); //動いた
+
+				hoge.localPosition=new Vector3(600*hour/2,hoge.transform.position.y,0);
+//				hoge.sizeDelta=new Vector2(600*t,y); //サイ2ズが変更できる
+
+
+				RectTransform hoge2 = ScrollObject.GetComponent<RectTransform>();
+				var y2 = hoge2.transform.position.y;
+
+				hoge2.sizeDelta=new Vector2(600*hour,y2); //サイズが変更できる
+
                 //グラフの上限を1fに設定
                 Output_Line.theGraph.yAxis.AxisMaxValue = 1f;
                 //折れ線グラフにいびきデータを設定
@@ -285,6 +330,18 @@ namespace Graph
         {
             Output_Line.ClearPointValues();
         }
+
+		float iziru(List<IbikiGraph.Data> dataList){
+
+
+
+			System.DateTime detectionStartTime = dataList.First().GetTime().Value;
+			System.DateTime detectionEndTime = dataList.Last().GetTime().Value.AddSeconds(20);
+
+			System.TimeSpan diff = detectionEndTime - detectionStartTime;
+
+			return (float)(diff.TotalHours);
+		}
 
         //取得した、いびきの大きさのデータをグラフに表示しやすいようにラベルデータへ変換する
         List<LabelData> TransSensingDataToLabelData(List<IbikiGraph.Data> dataList)

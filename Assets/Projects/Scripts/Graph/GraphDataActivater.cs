@@ -60,6 +60,7 @@ namespace Graph {
 
 		//アクティブなグラフを変更します
 		void ChangeActiveGraph (IGraphDataSwitch targetGraph) {
+			Debug.Log ("mou GDA ChangeActiveGraph");
 			//現在表示中のグラフを取り除く
 			if (activeGraph != null) {
 				activeGraph.SetDisActive ();

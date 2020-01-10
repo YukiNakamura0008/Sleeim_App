@@ -161,6 +161,7 @@ public class MyDatabase {
 	}
 
 	public SleepTable GetSleepTable () {
+		Debug.Log ("fee");
 		Debug.Log ("SleepTable:" + mSleepTable);
 		Debug.Log ("DB:" + mDb);
 		return mSleepTable;
